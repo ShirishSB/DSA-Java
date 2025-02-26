@@ -1,0 +1,62 @@
+Problem statement
+Given a stack, sort the elements inside that stack in ascending order using only push and pop operation. You can use one additional stack only.
+
+For eg.
+
+Input Stack :  5 (top)
+               4
+               3
+               2
+               1
+Output Stack : 1 (top)
+               2
+               3
+               4
+               5
+Detailed explanation ( Input/output format, Notes, Images )
+Constraints
+0 <= N <= 1000
+Time limit: 1 sec
+Sample Input
+5
+1 2 3 4 5
+Sample Output
+1 2 3 4 5
+
+------------------------------------------------------Code------------------------------------------------------
+
+
+import java.util.Stack;
+
+
+public class Solution {
+	public static void sortStack(Stack<Integer> stack){
+		
+		// Write your code here		
+		int ans[] = new int[stack.size()];
+		int i = 0;
+		while(!stack.isEmpty()){
+			int val = stack.pop();
+			ans[i++] = val; 
+		}
+		for(int k=0;k<ans.length-1;k++){
+			int minIndex = k;
+			for(int j=k;j<ans.length;j++){
+				if(ans[minIndex]>ans[j]){
+					minIndex = j;
+				}
+			}
+
+			int temp = ans[k];
+			ans[k] = ans[minIndex];
+			ans[minIndex] = temp; 
+		}
+		for(int j=ans.length-1;j>=0;j--){
+			stack.push(ans[j]);
+		}
+
+	}
+
+	
+
+}

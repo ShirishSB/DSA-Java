@@ -1,0 +1,82 @@
+ Amazing Strings
+Easy
+40/40
+1 upvote
+Asked in companies
+Problem statement
+Given 3 Strings, check whether the 3rd string contains all the characters of string 1 and 2 in any order. If all the characters are present, print "YES" otherwise print "NO".
+
+There should not be any extra character and any missing character.
+
+The string s contains uppercase Latin letters only.
+
+Detailed explanation ( Input/output format, Notes, Images )
+Constraints :
+1 <= n (Length of 1st & 2nd Strings) <= 100
+
+Sample Input 1 :
+SANTACLAUS
+DEDMOROZ
+SANTAMOROZDEDCLAUS
+Sample Output 1 :
+YES
+Sample Input 2 :
+PAPAINOEL
+JOULUPUKKI
+JOULNAPAOILELUPUKKI
+Sample Output 2 :
+NO
+Sample Input 3 :
+BABBONATALE
+FATHERCHRISTMAS
+BABCHRISTMASBONATALLEFATHER
+Sample Output 3 :
+NO
+Sample Output Explanation :
+Output 1 : the letters written in the last line can be used to write the names and there won't be any extra letters left.
+Output 2 : Letter "P" is missing and there's an extra letter "L"
+Output 3 : There's an extra letter "L"
+
+--------------------------------------------------Code------------------------------------------------------------
+
+public class Solution {
+
+	
+	public static void answer(String s1,String s2,String s3)
+	{
+
+		// Write your code here
+		int ans[] = new int[26];
+		int flag = 1;
+		
+
+		for(int i=0;i<s1.length();i++){
+			ans[s1.charAt(i)-'A']++;
+		}
+
+		for(int i=0;i<s2.length();i++){
+			ans[s2.charAt(i)-'A']++;
+		}
+
+		for(int i=0;i<s3.length();i++){
+			ans[s3.charAt(i)-'A']--;
+		}
+
+		for(int i=0;i<ans.length;i++){
+			if(ans[i]!=0){
+				flag = 0;
+				break;
+			}
+		}
+		if(flag==0){
+			System.out.println("NO");
+		}
+		else{
+			System.out.println("YES");
+		}
+
+	}
+	
+
+	
+}
