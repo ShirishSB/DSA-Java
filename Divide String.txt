@@ -1,0 +1,74 @@
+Divide String
+Moderate
+80/80
+Average time to solve is 15m
+Contributed by
+Asked in companies
+Problem statement
+Ninja has been given a string ‘WORD’ containing lower case alphabets. Ninja wants to know all the strings by dividing ‘WORD’ into ‘N’ strings of equal length.
+
+For Example:
+
+For ‘WORD’ =  “abcdefgh”, ‘N’ = 2. Following are the 2 strings of length 4.
+
+“abcd”
+“efgh”
+Can you help Ninja to get all the strings from ‘WORD’ by dividing them into equal parts?
+
+Detailed explanation ( Input/output format, Notes, Images )
+Constraints:
+1 <= ‘T’ <= 100
+‘WORD’ = Lower case english alphabet
+1 <= |WORD| <= 2000
+1 <= ‘N’ <= |WORD|
+
+Time Limit: 1 second
+Sample Input 1:
+2
+asdfghjkl 3
+codingninjas 5
+Sample Output 1:
+asd fgh jkl
+Explanation For Sample Output 1:
+For the first test case:
+Given ‘WORD’ = “asdfghjkl” can be divided into 3 strings each of length 3. 
+
+Following are the possible strings of length 3.
+1. “asd”
+2. “fgh”
+3. “jkl”  
+
+For the second test case:
+Given ‘WORD’ = “codingninjas”, it is impossible to divide this ‘WORD’ into 5 strings of equal length. 
+
+So we return an empty array/list.
+Sample Input 2:
+2   
+a 1
+code 4
+Sample Output 2:
+a
+c o d e
+
+-------------------------------------------------------------------------Code-------------------------------------------------------------------------------
+
+import java.util.*;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+    public static ArrayList<String> divideString(String word, int n) {
+        // Write your code here
+        ArrayList<String> list = new ArrayList<>();
+        int len = word.length();
+        if(len%n!=0){
+            return new ArrayList<>();
+        }
+        int parts = len/n;
+        for(int i=0;i<len;i+=parts){
+            list.add(word.substring(i,i+parts));
+        }
+
+        return list;
+    }
+}
